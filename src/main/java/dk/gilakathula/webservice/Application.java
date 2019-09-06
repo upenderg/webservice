@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.ApiInfoBuilder;
@@ -15,12 +16,14 @@ import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.io.IOException;
 
 import static com.google.common.base.Predicates.not;
 
 @SpringBootApplication
+@EnableSwagger2
 public class Application {
 
     @Value("${payload.validation.schemas.path}")
@@ -33,20 +36,11 @@ public class Application {
     }
 
     @Bean
-    public Docket swaggerForCustomers() {
+    public Docket swagger() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .groupName("External")
-                .apiInfo(
-                        new ApiInfoBuilder()
-                                .title("Simple web-service")
-                                .description("Simple web-service")
-                                .version("0.1")
-                                .build()
-                )
-                .useDefaultResponseMessages(false)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("dk.gilakathula.webservice"))
-                .paths(not(PathSelectors.regex("/error*")))
+                .apis(RequestHandlerSelectors.any())
+                .paths(PathSelectors.any())
                 .build();
     }
 
@@ -54,16 +48,13 @@ public class Application {
     @Bean
     public WebMvcConfigurer webMvcConfigAdapter() {
         return new WebMvcConfigurer() {
-            @Override
-            public void addViewControllers(ViewControllerRegistry registry) {
-                registry.addViewController("/").setViewName("redirect:/swagger-ui.html");
-            }
 
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/*").allowedOrigins("*");
             }
         };
+
     }
 
     @Bean
