@@ -23,7 +23,6 @@ public class OrdersHelperMockTest {
     private OrdersHelper ordersHelper;
     private final ObjectMapper mapper = new ObjectMapper();
     private String payload;
-    private OrderStatus orderStatusOk;
 
 
     private static final Product product = new Product.Builder()
@@ -43,14 +42,12 @@ public class OrdersHelperMockTest {
 
     @Before
     public void setUp() throws IOException {
-        orderStatusOk = new OrderStatus(true, "okay", HttpStatus.OK);
         payload = mapper.writeValueAsString(order);
     }
 
     @Test
-    public void placeOrder() throws IOException {
+    public void placeOrder() {
         ordersHelper.placeOrder(payload);
-        order = mapper.readValue(payload, Order.class);
         verify(ordersHelper).placeOrder(payload);
         verifyZeroInteractions(ordersHelper);
     }
