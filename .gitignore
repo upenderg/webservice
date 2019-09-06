@@ -1,0 +1,14 @@
+*.class
+*.jar
+*.war
+*.ear
+
+
+
+target/
+
+*.iml
+.idea
+*.log
+/*.jar
+

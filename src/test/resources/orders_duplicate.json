@@ -1,0 +1,18 @@
+[
+  {
+    "email": "fake@wipe.com",
+    "products": [
+      {
+        "id": 1,
+        "name": "Product1",
+        "price": 300.0
+      },
+      {
+        "id": 1,
+        "name": "Product1",
+        "price": 300.0
+      }
+    ]
+  }
+]
+
