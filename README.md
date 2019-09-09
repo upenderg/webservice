@@ -35,6 +35,8 @@ docker run -p 8080:8080 --name webservice --link mongo webservice:0.1.0
 ## Swagger
 http://localhost:8080/v2/api-docs
 
+## Postman collection link
+https://www.getpostman.com/collections/e167d855383672e1856c
 
 ## Things could be added or improved
 - Pagination
