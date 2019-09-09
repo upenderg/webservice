@@ -2,18 +2,23 @@
 
 ## Introduction
 
-REST APIs to retrieve all products
-    Pagination
-    Product by name
-REST APIs to retrieve all Orders
-    Pagination
-    Orders by name
+Simple web service provides a way to create a product and place an order using the REST APIS.
+At the moment its not protected by any security mechanism.
+
+Here are the REST APIS:
+
+### Products API
+ - Basic CRUD Operations
+### Orders API
+ - Get Orders by days
+ - Create an Order
+    
 
 ## How to deploy?
 
 1. Make sure that you have Docker installed on your local machine
-2. Once you checkout the project do a mvn clean install
-3. If you want to run Integration tests you need to install mongodb locally on ubuntu(https://hevodata.com/blog/install-mongodb-on-ubuntu/). 
+2. If you want to run Integration tests you need to install mongodb locally on ubuntu(https://hevodata.com/blog/install-mongodb-on-ubuntu/). 
+3. Else if you want to simple run the application on your local machine please follow these steps
 
 ```
 mvn clean install -DskipTests
@@ -32,11 +37,14 @@ http://localhost:8080/v2/api-docs
 
 
 ## Things could be added or improved
-Metrices
-Alerts
-Java Melody
-Product Attributes
-OAuth security
+- Pagination
+- Java Melody
+- Product Attributes
+- Customer Info
+- OAuth security
+- Metrices
+- Alerts
+
 
 
 
