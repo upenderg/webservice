@@ -80,7 +80,7 @@
     </dependencies>
 
     <properties>
-        <springfox.version>2.9.2</springfox.version>
+        <springfox.version>2.10.0</springfox.version>
         <spring-data-commons.version>2.1.10.RELEASE</spring-data-commons.version>
     </properties>
 
